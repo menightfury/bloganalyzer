@@ -8,7 +8,7 @@
     box-sizing: border-box;
 }
 .onp-sociallocker-state-loading .onp-sociallocker-button-inner-wrap { 
-    background: url('http://1.bp.blogspot.com/-rmBq4v6cP4w/U5qZZdqHAfI/AAAAAAAAARo/UC6aC0QqIU8/s1600/button-loader-f2f2f2.gif') 50% 50% no-repeat;
+    background: url('button-loader-f2f2f2.gif') 50% 50% no-repeat;
 }
 
 .onp-social-button {
