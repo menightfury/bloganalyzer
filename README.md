@@ -1,2 +1,2 @@
 # tryingtounderstand
-Trying to understand how github works
+CSS, Javascript and jQuery used in Bloganalyzer.blogspot.com 
