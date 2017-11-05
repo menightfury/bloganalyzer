@@ -1,0 +1,323 @@
+/* ------- Prism Highlighter ------- */
+
+code, pre {
+  font-size: 13px;
+  font-family: Consolas, Monaco, 'Andale Mono', monospace;
+  text-align: left;
+  line-height: 1.5;
+  background-color: #fdfdfd;
+  -moz-tab-size: 4;
+  -o-tab-size: 4;
+  tab-size: 4;
+  -moz-user-select: text;
+  -webkit-user-select: text;
+  -ms-user-select: text;
+  user-select: text;
+}
+
+pre {
+  position: relative;
+  margin: 0.5em 0;
+  border-left: 3px solid $(uicolorlight);
+  overflow: auto;
+  max-height: 30em;
+  counter-reset: linenumber;
+  white-space: pre;
+}
+
+code {
+  height: 100%;
+  display: inline;
+  padding: 0.2em;
+  border-radius: 3px;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+pre code {
+  position: relative;
+  display: block;
+  border-radius: 0;
+  -webkit-appearance: none;
+  border: none;
+  padding: 0;
+  padding-left: 3.8em;
+}
+
+pre[data-language]:before {
+  content: attr(data-language);
+  color: $(uicolordark);
+  background: #fdfdfd;
+  display: inline-block;
+  position: absolute;
+  top: 3px;
+  right: 20px;
+  z-index: 1;
+  padding: 2px 7px;
+  opacity: 1;
+  border: 1px solid $(uicolorlight);
+  border-radius: 3px;
+  box-shadow: 0 0 15px $(uicolorlight);
+  -moz-transition: opacity .5s ease;
+  -webkit-transition: opacity .5s ease;
+  -o-transition: opacity .5s ease;
+  transition: opacity .5s ease;
+}
+
+pre[data-language]:hover:before, pre[data-language]:active:before {
+  opacity: 0;
+}
+
+.token.comment, .token.block-comment, .token.prolog, .token.doctype, .token.cdata {
+  color: #7d8b99;
+}
+
+.token.punctuation {
+  color: #5f6364;
+}
+
+.token.property, .token.tag, .token.boolean, .token.number, .token.function-name, .token.constant, .token.symbol, .token.deleted {
+  color: #c92c2c;
+}
+
+.token.selector, .token.attr-name, .token.string, .token.char, .token.function, .token.builtin, .token.inserted {
+  color: #2f9c0a;
+}
+
+.token.operator, .token.entity, .token.url, .token.variable {
+  color: #a67f59;
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.token.atrule, .token.attr-value, .token.keyword, .token.class-name {
+  color: #1990b8;
+}
+
+.token.regex, .token.important {
+  color: #e90;
+}
+
+.language-css .token.string, .style .token.string {
+  color: #a67f59;
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.token.important {
+  font-weight: normal;
+}
+
+.token.bold {
+  font-weight: bold;
+}
+
+.token.italic {
+  font-style: italic;
+}
+
+.token.entity {
+  cursor: help;
+}
+
+.namespace {
+  opacity: 0.7;
+}
+
+
+/* Plugin styles */
+
+.token.tab:not(:empty):before, .token.cr:before, .token.lf:before {
+  color: #e0d7d1;
+}
+
+.line-numbers .line-numbers-rows {
+  position: absolute;
+  left: 0;
+  top: 0;
+  pointer-events: none;
+  font-size: 100%;
+  width: 3em;
+  letter-spacing: -1px;
+  border-right: 1px solid #999;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.line-numbers-rows>span {
+  pointer-events: none;
+  display: block;
+  counter-increment: linenumber;
+}
+
+.line-numbers-rows>span:before {
+  content: counter(linenumber);
+  color: #999;
+  display: block;
+  padding-right: 0.8em;
+  text-align: right;
+}
+
+
+/* --------- Lightbox ---------- */
+
+#lightboxOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  background-color: rgb(0, 0, 0);
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=85);
+  opacity: 0.85;
+  display: none;
+}
+
+#lightbox {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  z-index: 10000;
+  text-align: center;
+  line-height: 0;
+  font-family: "lucida grande", tahoma, verdana, arial, sans-serif;
+  font-weight: normal;
+}
+
+#lightbox img {
+  width: auto;
+  height: auto;
+}
+
+#lightbox a img {
+  border: none;
+}
+
+.lb-outerContainer {
+  position: relative;
+  background-color: $(uicolorlighter);
+  *zoom: 1;
+  width: 250px;
+  height: 250px;
+  margin: 0 auto;
+  border-radius: 4px;
+}
+
+.lb-outerContainer:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.lb-container {
+  padding: 10px;
+}
+
+.lb-loader {
+  position: absolute;
+  top: 40%;
+  left: 0%;
+  height: 25%;
+  width: 100%;
+  text-align: center;
+  line-height: 0;
+}
+
+.lb-nav {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 10;
+}
+
+.lb-container>.nav {
+  left: 0;
+}
+
+.lb-nav a {
+  outline: none;
+  font: 30px fontAwesome;
+  position: relative;
+}
+
+.lb-prev, .lb-next {
+  width: 54px;
+  height: 100%;
+  background: ("data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7");
+  /* Trick IE into showing hover */
+  display: block;
+  cursor: pointer;
+}
+
+.lb-prev {
+  float: left;
+}
+
+.lb-next {
+  float: right;
+}
+
+.lb-prev:hover:before {
+  content: '\f060';
+  position: absolute;
+  left: 5px;
+  top: 46%;
+}
+
+.lb-next:hover:after {
+  content: '\f061';
+  position: absolute;
+  right: 5px;
+  top: 46%;
+}
+
+.lb-dataContainer {
+  margin: 0 auto;
+  padding-top: 5px;
+  *zoom: 1;
+  width: 100%;
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 4px;
+}
+
+.lb-dataContainer:after {
+  content: '';
+  display: table;
+  clear: both;
+}
+
+.lb-data {
+  padding: 0 10px;
+  color: #bbbbbb;
+}
+
+.lb-data .lb-details {
+  width: 85%;
+  float: left;
+  text-align: left;
+  line-height: 1.1em;
+}
+
+.lb-data .lb-caption {
+  font-size: 13px;
+  font-weight: bold;
+  line-height: 1em;
+}
+
+.lb-data .lb-number {
+  display: block;
+  clear: left;
+  padding-bottom: 1em;
+  font-size: 11px;
+}
+
+.lb-data .lb-close {
+  width: 35px;
+  float: right;
+  padding-bottom: 0.7em;
+  outline: none;
+}
+
+.lb-data .lb-close:hover {
+  cursor: pointer;
+}
