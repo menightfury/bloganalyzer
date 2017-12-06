@@ -1,2 +1,2 @@
-# tryingtounderstand
-CSS, Javascript and jQuery used in Bloganalyzer.blogspot.com 
+# Repository for Bloganalyzer
+CSS, Javascript and jQuery used in http://bloganalyzer.blogspot.com 
