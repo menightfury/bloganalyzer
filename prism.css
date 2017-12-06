@@ -4,6 +4,7 @@ http://prismjs.com/download.html?themes=prism&languages=markup+css+clike+javascr
  * prism.js default theme for JavaScript, CSS and HTML
  * Based on dabblet (http://dabblet.com)
  * @author Lea Verou
+Edited
  */
 
 code[class*="language-"],
@@ -33,7 +34,7 @@ pre[class*="language-"]::-moz-selection, pre[class*="language-"] ::-moz-selectio
 code[class*="language-"]::-moz-selection, code[class*="language-"] ::-moz-selection {
 	text-shadow: none;
 	background: #b3d4fc;
-}
+} 
 
 pre[class*="language-"]::selection, pre[class*="language-"] ::selection,
 code[class*="language-"]::selection, code[class*="language-"] ::selection {
