@@ -1,77 +1,80 @@
 /* PrismJS 1.9.0
-http://prismjs.com/download.html?themes=prism&languages=markup+css+clike+javascript&plugins=line-highlight+line-numbers */
-/**
- * prism.js default theme for JavaScript, CSS and HTML
- * Based on dabblet (http://dabblet.com)
- * @author Lea Verou
-Edited 3
- */
-
-code[class*="language-"],
-pre[class*="language-"] {
-	color: black;
-	background: none;
-	text-shadow: 0 1px white;
-	font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
-	text-align: left;
-	white-space: pre;
-	word-spacing: normal;
-	word-break: normal;
-	word-wrap: normal;
-	line-height: 1.5;
-
-	-moz-tab-size: 4;
-	-o-tab-size: 4;
-	tab-size: 4;
-
-	-webkit-hyphens: none;
+http://prismjs.com/download.html?themes=prism&languages=markup+css+clike+javascript&plugins=line-highlight+line-numbers
+Edited 1.0.0
+*/
+pre, code {
+  background-color: #fdfdfd;
+  font-size: 13px;
+  font-family: Consolas, Monaco, 'Andale Mono', monospace;
+  text-align: left;
+  line-height: 1.5;
+  
+  -moz-tab-size: 4;
+  -o-tab-size: 4;
+  tab-size: 4;
+  
+  -webkit-hyphens: none;
 	-moz-hyphens: none;
 	-ms-hyphens: none;
 	hyphens: none;
+  
+  -moz-user-select: text;
+  -webkit-user-select: text;
+  -ms-user-select: text;
+  user-select: text;
 }
 
-pre[class*="language-"]::-moz-selection, pre[class*="language-"] ::-moz-selection,
-code[class*="language-"]::-moz-selection, code[class*="language-"] ::-moz-selection {
-	text-shadow: none;
-	background: #b3d4fc;
-} 
-
-pre[class*="language-"]::selection, pre[class*="language-"] ::selection,
-code[class*="language-"]::selection, code[class*="language-"] ::selection {
-	text-shadow: none;
-	background: #b3d4fc;
+pre {
+  position: relative;
+  margin: 0.5em 0;
+  border-left: 3px solid;
+  overflow: auto;
+  max-height: 30em;
+  counter-reset: linenumber;
+  white-space: pre;
 }
 
-@media print {
-	code[class*="language-"],
-	pre[class*="language-"] {
-		text-shadow: none;
-	}
+code {
+  height: 100%;
+  display: inline;
+  padding: 0.2em;
+  border-radius: 3px;
+  border: 1px solid rgba(0, 0, 0, 0.3);
 }
 
-/* Code blocks */
-pre[class*="language-"] {
-	padding: 1em;
-	margin: .5em 0;
-	overflow: auto;
+pre code {
+  position: relative;
+  display: block;
+  border-radius: 0;
+  -webkit-appearance: none;
+  border: none;
+  padding: 0;
+  padding-left: 3.8em;
 }
 
-:not(pre) > code[class*="language-"],
-pre[class*="language-"] {
-	background: #f5f2f0;
+pre[data-language]:before {
+  content: attr(data-language);
+  background: #fdfdfd;
+  display: inline-block;
+  position: absolute;
+  top: 3px;
+  right: 20px;
+  z-index: 1;
+  padding: 2px 7px;
+  opacity: 1;
+  border: 1px solid;
+  border-radius: 3px;
+  box-shadow: 0 0 15px;
+  -moz-transition: opacity .5s ease;
+  -webkit-transition: opacity .5s ease;
+  -o-transition: opacity .5s ease;
+  transition: opacity .5s ease;
 }
 
-/* Inline code */
-:not(pre) > code[class*="language-"] {
-	padding: .1em;
-	border-radius: .3em;
-	white-space: normal;
+pre[data-language]:hover:before, pre[data-language]:active:before {
+  opacity: 0;
 }
-
-.token.comment,
-.token.prolog,
-.token.doctype,
-.token.cdata {
+.token.comment, .token.prolog, .token.doctype, .token.cdata {
 	color: slategray;
 }
 
@@ -83,37 +86,20 @@ pre[class*="language-"] {
 	opacity: .7;
 }
 
-.token.property,
-.token.tag,
-.token.boolean,
-.token.number,
-.token.constant,
-.token.symbol,
-.token.deleted {
+.token.property, .token.tag, .token.boolean, .token.number, .token.constant, .token.symbol, .token.deleted {
 	color: #905;
 }
 
-.token.selector,
-.token.attr-name,
-.token.string,
-.token.char,
-.token.builtin,
-.token.inserted {
+.token.selector, .token.attr-name, .token.string, .token.char, .token.builtin, .token.inserted {
 	color: #690;
 }
 
-.token.operator,
-.token.entity,
-.token.url,
-.language-css .token.string,
-.style .token.string {
+.token.operator, .token.entity, .token.url, .language-css .token.string, .style .token.string {
 	color: #a67f59;
 	background: hsla(0, 0%, 100%, .5);
 }
 
-.token.atrule,
-.token.attr-value,
-.token.keyword {
+.token.atrule, .token.attr-value, .token.keyword {
 	color: #07a;
 }
 
@@ -121,16 +107,14 @@ pre[class*="language-"] {
 	color: #DD4A68;
 }
 
-.token.regex,
-.token.important,
-.token.variable {
+.token.regex, .token.important, .token.variable {
 	color: #e90;
 }
 
-.token.important,
-.token.bold {
+.token.important, .token.bold {
 	font-weight: bold;
 }
+
 .token.italic {
 	font-style: italic;
 }
@@ -160,32 +144,30 @@ pre[data-line] {
 	white-space: pre;
 }
 
-	.line-highlight:before,
-	.line-highlight[data-end]:after {
-		content: attr(data-start);
-		position: absolute;
-		top: .4em;
-		left: .6em;
-		min-width: 1em;
-		padding: 0 .5em;
-		background-color: hsla(24, 20%, 50%,.4);
-		color: hsl(24, 20%, 95%);
-		font: bold 65%/1.5 sans-serif;
-		text-align: center;
-		vertical-align: .3em;
-		border-radius: 999px;
-		text-shadow: none;
-		box-shadow: 0 1px white;
-	}
+.line-highlight:before,	.line-highlight[data-end]:after {
+	content: attr(data-start);
+	position: absolute;
+	top: .4em;
+	left: .6em;
+	min-width: 1em;
+	padding: 0 .5em;
+	background-color: hsla(24, 20%, 50%,.4);
+	color: hsl(24, 20%, 95%);
+	font: bold 65%/1.5 sans-serif;
+	text-align: center;
+	vertical-align: .3em;
+	border-radius: 999px;
+	text-shadow: none;
+	box-shadow: 0 1px white;
+}
 
-	.line-highlight[data-end]:after {
-		content: attr(data-end);
-		top: auto;
-		bottom: .4em;
-	}
+.line-highlight[data-end]:after {
+	content: attr(data-end);
+	top: auto;
+	bottom: .4em;
+}
 
-.line-numbers .line-highlight:before,
-.line-numbers .line-highlight:after {
+.line-numbers .line-highlight:before, .line-numbers .line-highlight:after {
 	content: none;
 }
 
@@ -197,7 +179,7 @@ pre.line-numbers {
 
 pre.line-numbers > code {
 	position: relative;
-    white-space: inherit;
+  white-space: inherit;
 }
 
 .line-numbers .line-numbers-rows {
@@ -217,16 +199,16 @@ pre.line-numbers > code {
 
 }
 
-	.line-numbers-rows > span {
-		pointer-events: none;
-		display: block;
-		counter-increment: linenumber;
-	}
+.line-numbers-rows > span {
+	pointer-events: none;
+	display: block;
+	counter-increment: linenumber;
+}
 
-		.line-numbers-rows > span:before {
-			content: counter(linenumber);
-			color: #999;
-			display: block;
-			padding-right: 0.8em;
-			text-align: right;
-		}
+.line-numbers-rows > span:before {
+	content: counter(linenumber);
+	color: #999;
+	display: block;
+	padding-right: 0.8em;
+	text-align: right;
+}
