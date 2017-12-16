@@ -1,6 +1,7 @@
 /* PrismJS 1.9.0
 http://prismjs.com/download.html?themes=prism&languages=markup+css+clike+javascript&plugins=line-highlight+line-numbers
 Edited 1.0.0
+Added toolbar
 */
 pre, code {
   background-color: #fdfdfd;
@@ -43,28 +44,8 @@ pre code {
   padding-left: 3.8em;
 }
 
-pre[data-language]:before {
-  content: attr(data-language);
-  background: #fdfdfd;
-  display: inline-block;
-  position: absolute;
-  top: 3px;
-  right: 20px;
-  z-index: 1;
-  padding: 2px 7px;
-  opacity: 1;
-  border: 1px solid;
-  border-radius: 3px;
-  box-shadow: 0 0 15px;
-  
-  -moz-transition: opacity .5s ease;
-  -webkit-transition: opacity .5s ease;
-  -o-transition: opacity .5s ease;
-  transition: opacity .5s ease;
-}
-
-pre[data-language]:hover:before, pre[data-language]:active:before {
-  opacity: 0;
+pre .toolbar {
+  padding: 5px;
 }
 
 .token.comment, .token.prolog, .token.doctype, .token.cdata {
